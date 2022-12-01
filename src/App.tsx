@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Paper } from "@mui/material";
+import CustomTable from "./custom-table/custom-table";
+import { personColumn, Car, Person, carColumn, cars, persons } from "./data";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Paper
+      sx={{
+        padding: "10px",
+        background: "teal",
+      }}
+    >
+      <CustomTable<Person>
+        columns={personColumn}
+        data={persons}
+        defaultSortedColumn="Name"
+      />
+
+      <div style={{ padding: "30px 0", background: "red", margin: "20px 0" }} />
+
+      <CustomTable<Car>
+        columns={carColumn}
+        data={cars}
+        defaultSortedColumn="Model"
+      />
+    </Paper>
   );
 }
 
